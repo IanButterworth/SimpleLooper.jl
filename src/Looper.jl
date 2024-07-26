@@ -31,7 +31,7 @@ macro loop(exs...)
     if length(exs) == 1
         quote
             while true
-                $(esc(first(exs)))
+                Core.donotdelete($(esc(first(exs))))
             end
         end
     elseif length(exs) == 2
@@ -40,13 +40,13 @@ macro loop(exs...)
         if terms isa Expr || terms isa Bool
             quote
                 while $(esc(terms))
-                    $(esc(ex))
+                    Core.donotdelete($(esc(ex)))
                 end
             end
         elseif terms isa Integer
             quote
                 for _ = 1:$(esc(terms))
-                    $(esc(ex))
+                    Core.donotdelete($(esc(ex)))
                 end
             end
         else
