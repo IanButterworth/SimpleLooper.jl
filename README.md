@@ -1,6 +1,6 @@
-# Looper.jl
+# SimpleLooper.jl
 
-[![Build Status](https://github.com/IanButterworth/Looper.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/IanButterworth/Looper.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/IanButterworth/SimpleLooper.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/IanButterworth/SimpleLooper.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
 A simple looper.
 

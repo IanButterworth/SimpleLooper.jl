@@ -1,7 +1,7 @@
 using Test
-using Looper
+using SimpleLooper
 
-@testset "Looper.jl" begin
+@testset "SimpleLooper.jl" begin
     counter = 0
     @loop 3 counter += 1
     @test counter == 3

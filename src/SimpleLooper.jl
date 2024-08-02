@@ -1,4 +1,4 @@
-module Looper
+module SimpleLooper
 
 export @loop
 
