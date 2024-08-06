@@ -52,9 +52,9 @@ macro loop(exs...)
         elseif terms isa String
             if endswith(terms, "s")
                 seconds = parse(Int, split(terms, "s")[1])
-                t_end = time() + seconds
                 quote
-                    while time() < $t_end
+                    local t_end = time() + $seconds
+                    while time() < t_end
                         Core.donotdelete($(esc(ex)))
                     end
                 end

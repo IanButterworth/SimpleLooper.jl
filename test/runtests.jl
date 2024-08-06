@@ -13,6 +13,9 @@ using SimpleLooper
     # cannot test because we cannot interrupt the infinite loop
     # @loop counter += 1
 
-    t = @elapsed @loop "1s" counter += 1
-    @test t ≈ 1.0 atol=0.1
+    foo() = @loop "1s" counter += 1
+    for _ in 1:2
+        t = @elapsed foo()
+        @test t ≈ 1.0 atol=0.1
+    end
 end
