@@ -18,4 +18,9 @@ using SimpleLooper
         t = @elapsed foo()
         @test t ≈ 1.0 atol=0.1
     end
+    foo() = @loop "0.5s" counter += 1
+    for _ in 1:2
+        t = @elapsed foo()
+        @test t ≈ 0.5 atol=0.1
+    end
 end

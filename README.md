@@ -8,11 +8,13 @@ A simple looper.
 @loop call
 @loop n call
 @loop bool_expr call
+@loop "1s" call
 ```
 
 Repeat `call` indefinitely until interrupt or `n` times and discard the output.
 If an expression is given as a first argument it must return a `Bool` and
-repeats will occur until `false`.
+repeats will occur until `false`. If a string in the form `"Ns"` is given the loop
+will run for N seconds.
 
 ```julia-repl
 julia> @loop println("Hello, World!")
@@ -32,8 +34,10 @@ Hello, World!
 Useful in the repl for things like:
 
 ```julia-repl
-julia> @time @repeat 100000000 rand()
+julia> @time @loop 100000000 rand()
   0.095913 seconds
 
-julia> @profile @repeat 10000 foo()
+julia> @profile @loop "2s" foo()
+
+julia> @profile @loop 10000 foo()
 ```

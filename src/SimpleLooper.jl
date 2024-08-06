@@ -51,7 +51,7 @@ macro loop(exs...)
             end
         elseif terms isa String
             if endswith(terms, "s")
-                seconds = parse(Int, split(terms, "s")[1])
+                seconds = parse(Float64, split(terms, "s")[1])
                 quote
                     local t_end = time() + $seconds
                     while time() < t_end
