@@ -1,7 +1,7 @@
 name = "SimpleLooper"
 uuid = "ff33fe5b-d8e3-4cbd-8bd9-3d2408ff8cab"
 authors = ["Ian Butterworth and contributors"]
-version = "0.1.0"
+version = "0.2.0"
 
 [compat]
 julia = "1.10"
