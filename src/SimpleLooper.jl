@@ -49,6 +49,18 @@ macro loop(exs...)
                     Core.donotdelete($(esc(ex)))
                 end
             end
+        elseif terms isa String
+            if endswith(terms, "s")
+                seconds = parse(Int, split(terms, "s")[1])
+                t_end = time() + seconds
+                quote
+                    while time() < $t_end
+                        Core.donotdelete($(esc(ex)))
+                    end
+                end
+            else
+                throw(ArgumentError("A string first argument to loop should be in the form \"Ns\" for number of seconds to run for"))
+            end
         else
             throw(ArgumentError("@loop first argument must be an Integer or an expression that returns a boolean"))
         end

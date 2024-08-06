@@ -12,4 +12,8 @@ using SimpleLooper
 
     # cannot test because we cannot interrupt the infinite loop
     # @loop counter += 1
+
+    t = @elapsed @loop "1s" counter += 1
+    @test t ≈ 1.0 atol=0.1
+    @test_throws ArgumentError @loop "1" counter += 1
 end
