@@ -49,20 +49,15 @@ macro loop(exs...)
                     Core.donotdelete($(esc(ex)))
                 end
             end
-        elseif terms isa String
-            if endswith(terms, "s")
-                seconds = parse(Float64, split(terms, "s")[1])
-                quote
-                    local t_end = time() + $seconds
-                    while time() < t_end
-                        Core.donotdelete($(esc(ex)))
-                    end
+        elseif terms isa AbstractFloat
+            quote
+                local t_end = time() + $terms
+                while time() < t_end
+                    Core.donotdelete($(esc(ex)))
                 end
-            else
-                throw(ArgumentError("A string first argument to loop should be in the form \"Ns\" for number of seconds to run for"))
             end
         else
-            throw(ArgumentError("@loop first argument must be an Integer or an expression that returns a boolean"))
+            throw(ArgumentError("@loop first argument must be an Integer (n loops), Float (seconds) or an expression that returns a boolean"))
         end
     else
         throw(ArgumentError("Too many arguments passed to @loop"))
