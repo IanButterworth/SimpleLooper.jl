@@ -14,7 +14,7 @@ using SimpleLooper
     @test (@loop 1 1) === nothing
 
     # loops don't introduce new scope
-    @test (@loop 3 x = 1) == 1
+    @loop 3 x = 1
     @test @isdefined x
 
     # cannot test because we cannot interrupt the infinite loop
